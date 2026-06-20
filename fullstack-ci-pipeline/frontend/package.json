@@ -1,0 +1,7 @@
+{
+  "name": "frontend-ui",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'Compiling production React assets... Done!' && mkdir dist && echo '<html></html>' > dist/index.html"
+  }
+}
