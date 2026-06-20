@@ -1,0 +1,38 @@
+name: Full-Stack Parallel Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run API Tests
+        run: npm test
+        working-directory: ./backend
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Compile UI Production Assets
+        run: npm run build
+        working-directory: ./frontend
